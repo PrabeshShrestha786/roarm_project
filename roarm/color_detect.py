@@ -43,8 +43,7 @@ def detect_color(image_path, debug=False):
             "orange": int(np.sum((hue_values >= 11) & (hue_values <= 20))),
             "yellow": int(np.sum((hue_values >= 21) & (hue_values <= 34))),
             "green": int(np.sum((hue_values >= 35) & (hue_values <= 85))),
-            "cyan": int(np.sum((hue_values >= 86) & (hue_values <= 100))),
-            "blue": int(np.sum((hue_values >= 101) & (hue_values <= 130))),
+            "blue": int(np.sum((hue_values >= 86) & (hue_values <= 130))),
             "purple": int(np.sum((hue_values >= 131) & (hue_values <= 155))),
             "pink": int(np.sum((hue_values >= 156) & (hue_values <= 169))),
         }
