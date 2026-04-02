@@ -4,6 +4,7 @@ import time
 GRIPPER_CMD = 106
 HOME_CMD = 100
 JOINT_MOVE_CMD = 101
+LED_CMD = 114
 
 GRIPPER_OPEN = 1.57
 GRIPPER_CLOSE = 3.14
@@ -68,6 +69,15 @@ class RoArm:
 
     def move_wrist_2(self, rad: float, spd: int = 0, acc: int = 10, delay: float = 0.1):
         self.move_joint(JOINT_WRIST_2, rad, spd, acc, delay)
+
+    def light_on(self, brightness: int = 255, delay: float = 0.1):
+        brightness = max(0, min(255, brightness))
+        print(f"Turning flashlight ON (brightness={brightness})...")
+        self.send(f'{{"T":{LED_CMD},"led":{brightness}}}', delay=delay)
+
+    def light_off(self, delay: float = 0.1):
+        print("Turning flashlight OFF...")
+        self.send(f'{{"T":{LED_CMD},"led":0}}', delay=delay)
 
     def disconnect(self):
         print("Disconnecting...")
